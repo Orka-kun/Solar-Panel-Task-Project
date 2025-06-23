@@ -8,30 +8,32 @@ import React, { useState, useEffect } from 'react';
     const [quantity, setQuantity] = useState(4);
     const [amount, setAmount] = useState(2200);
     const [error, setError] = useState(null);
+    
+//WAITING FOR BACKEND DEPLOYMENT*******************************************************************************
 
-    useEffect(() => {
-      const initializeStripeAndCsrf = async () => {
-        try {
-          console.log('Fetching CSRF token from /api/csrf-token');
-          const csrfResponse = await axios.get('/api/csrf-token', { withCredentials: true });
-          console.log('CSRF Response:', csrfResponse.data);
-          const stripeInstance = await loadStripe(import.meta.env.VITE_STRIPE_KEY);
-          setStripe(stripeInstance);
-          if (stripeInstance) {
-            const elements = stripeInstance.elements();
-            const card = elements.create('card');
-            card.mount('#card-element');
-            setCardElement(card);
-          } else {
-            setError('Failed to load Stripe');
-          }
-        } catch (err) {
-          console.error('CSRF or Stripe Error:', err);
-          setError('Error initializing Stripe or fetching CSRF: ' + err.message);
-        }
-      };
-      initializeStripeAndCsrf();
-    }, []);
+    // useEffect(() => {
+    //   const initializeStripeAndCsrf = async () => {
+    //     try {
+    //       console.log('Fetching CSRF token from /api/csrf-token');
+    //       const csrfResponse = await axios.get('/api/csrf-token', { withCredentials: true });
+    //       console.log('CSRF Response:', csrfResponse.data);
+    //       const stripeInstance = await loadStripe(import.meta.env.VITE_STRIPE_KEY);
+    //       setStripe(stripeInstance);
+    //       if (stripeInstance) {
+    //         const elements = stripeInstance.elements();
+    //         const card = elements.create('card');
+    //         card.mount('#card-element');
+    //         setCardElement(card);
+    //       } else {
+    //         setError('Failed to load Stripe');
+    //       }
+    //     } catch (err) {
+    //       console.error('CSRF or Stripe Error:', err);
+    //       setError('Error initializing Stripe or fetching CSRF: ' + err.message);
+    //     }
+    //   };
+    //   initializeStripeAndCsrf();
+    // }, []);
 
     const handlePlaceOrder = async (event) => {
       event.preventDefault();
