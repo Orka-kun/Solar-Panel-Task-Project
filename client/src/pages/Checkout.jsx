@@ -62,6 +62,10 @@ import React, { useState, useEffect } from 'react';
     //     }
     //   }
     // };
+    const handlePlaceOrder = (event) => {
+    event.preventDefault();
+    setError('Payment simulated. Backend not connected.');
+  };//TEMPORARY 2 LINES FOR FRONTEND ONLY
 //WAITING FOR BACKEND DEPLOYMENT*******************************************************************************
 
     return (
