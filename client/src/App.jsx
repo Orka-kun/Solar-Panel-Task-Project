@@ -14,39 +14,50 @@ const App = () => {
   const [remainingPanels, setRemainingPanels] = useState(863);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    fetch('http://localhost:8000/api/solar-panels')
-      .then(response => {
-        if (!response.ok) throw new Error('Network response was not ok');
-        return response.json();
-      })
-      .then(data => {
-        setPanels(data);
-        const total = data.reduce((sum, panel) => sum + Number(panel.amount), 0); // Convert string to number
-        setTotalRaised(total);
-        const donatedPanels = data.reduce((sum, panel) => sum + panel.quantity, 0);
-        setRemainingPanels(totalPanels - donatedPanels);
-      })
-      .catch(error => setError(error.message));
-  }, []);
+  // useEffect(() => {
+  //   fetch('http://localhost:8000/api/solar-panels')
+  //     .then(response => {
+  //       if (!response.ok) throw new Error('Network response was not ok');
+  //       return response.json();
+  //     })
+  //     .then(data => {
+  //       setPanels(data);
+  //       const total = data.reduce((sum, panel) => sum + Number(panel.amount), 0); // Convert string to number
+  //       setTotalRaised(total);
+  //       const donatedPanels = data.reduce((sum, panel) => sum + panel.quantity, 0);
+  //       setRemainingPanels(totalPanels - donatedPanels);
+  //     })
+  //     .catch(error => setError(error.message));
+  // }, []);
 
-  const handleDonate = (quantity) => {
-    const panel = panels.find(p => p.quantity === quantity);
-    if (panel) {
-      alert(`Donated ${quantity} panel(s) for $${panel.amount}`);
-      fetch('http://localhost:8000/api/solar-panels', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ quantity, amount: panel.amount }),
-      })
-        .then(response => {
-          if (!response.ok) throw new Error('Failed to donate');
-          return response.json();
-        })
-        .then(data => setPanels([...panels, data]))
-        .catch(error => setError(error.message));
-    }
-  };
+  // const handleDonate = (quantity) => {
+  //   const panel = panels.find(p => p.quantity === quantity);
+  //   if (panel) {
+  //     alert(`Donated ${quantity} panel(s) for $${panel.amount}`);
+  //     fetch('http://localhost:8000/api/solar-panels', {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify({ quantity, amount: panel.amount }),
+  //     })
+  //       .then(response => {
+  //         if (!response.ok) throw new Error('Failed to donate');
+  //         return response.json();
+  //       })
+  //       .then(data => setPanels([...panels, data]))
+  //       .catch(error => setError(error.message));
+  //   }
+  // };
+
+
+
+const handleDonate = (quantity) => {
+         alert(`Donation of ${quantity} panel(s) is simulated. Backend not connected.`);
+       };//TEMPORARY 2 LINES ONLY
+
+
+
+
+
 
   if (error) return <div>Error: {error}</div>;
 
