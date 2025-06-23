@@ -34,35 +34,35 @@ import React, { useState, useEffect } from 'react';
     //   };
     //   initializeStripeAndCsrf();
     // }, []);
+    // const handlePlaceOrder = async (event) => {
+    //   event.preventDefault();
+    //   if (!stripe || !cardElement) {
+    //     setError('Stripe is not initialized');
+    //     return;
+    //   }
 
-    const handlePlaceOrder = async (event) => {
-      event.preventDefault();
-      if (!stripe || !cardElement) {
-        setError('Stripe is not initialized');
-        return;
-      }
-
-      const { token, error } = await stripe.createToken(cardElement);
-      if (error) {
-        setError(error.message);
-      } else {
-        try {
-          const response = await axios.post('/api/place-order', {
-            quantity,
-            amount,
-            stripeToken: token.id,
-          }, {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            withCredentials: true,
-          });
-          setError(response.data.message);
-        } catch (err) {
-          setError(err.response?.data?.message || 'An error occurred');
-        }
-      }
-    };
+    //   const { token, error } = await stripe.createToken(cardElement);
+    //   if (error) {
+    //     setError(error.message);
+    //   } else {
+    //     try {
+    //       const response = await axios.post('/api/place-order', {
+    //         quantity,
+    //         amount,
+    //         stripeToken: token.id,
+    //       }, {
+    //         headers: {
+    //           'Content-Type': 'application/json',
+    //         },
+    //         withCredentials: true,
+    //       });
+    //       setError(response.data.message);
+    //     } catch (err) {
+    //       setError(err.response?.data?.message || 'An error occurred');
+    //     }
+    //   }
+    // };
+//WAITING FOR BACKEND DEPLOYMENT*******************************************************************************
 
     return (
       <div className="w-full p-6 bg-white shadow-lg rounded-lg pb-40">
