@@ -62,6 +62,8 @@ import React, { useState, useEffect } from 'react';
     //     }
     //   }
     // };
+    //MOCK STRIPE ONLY FOR DISPLAY FRONTEND
+    const stripePromise = loadStripe('pk_test_51P3r2fLkgX7mX5zX8r9v9wX8r9v9wX8r9v9wX');
     const handlePlaceOrder = (event) => {
     event.preventDefault();
     setError('Payment simulated. Backend not connected.');
