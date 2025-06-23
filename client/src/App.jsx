@@ -69,6 +69,9 @@ const handleDonate = (quantity) => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/checkout" element={<Checkout />} />
+{/*         TEMPORARY 1 LINE ADDED */}
+        <Route path="*" element={<Home />} /> 
+{/*         TEMPORARY 1 LINE ADDED */}
       </Routes>
       <Footer />
     </Router>
