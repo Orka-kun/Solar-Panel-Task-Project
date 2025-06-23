@@ -13,7 +13,7 @@ const App = () => {
   const [totalPanels, setTotalPanels] = useState(3090);
   const [remainingPanels, setRemainingPanels] = useState(863);
   const [error, setError] = useState(null);
-
+//WAITING FOR BACKEND DEPLOYMENT*******************************************************************************
   // useEffect(() => {
   //   fetch('http://localhost:8000/api/solar-panels')
   //     .then(response => {
@@ -47,13 +47,13 @@ const App = () => {
   //       .catch(error => setError(error.message));
   //   }
   // };
-
+//WAITING FOR BACKEND DEPLOYMENT*******************************************************************************
 
 
 const handleDonate = (quantity) => {
          alert(`Donation of ${quantity} panel(s) is simulated. Backend not connected.`);
        };//TEMPORARY 2 LINES ONLY
-
+//WAITING FOR BACKEND DEPLOYMENT*******************************************************************************
 
 
 
